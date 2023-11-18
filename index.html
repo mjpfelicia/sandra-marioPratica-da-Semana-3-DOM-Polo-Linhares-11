@@ -14,36 +14,45 @@
 
 <body class="p-3 m-0 border-0">
 
-  <h1 class="text-center">Sistema de Cadastro de Clientes</h1>
+  <h1 class="text-center">Sistema de modelo de bolsa</h1>
   <hr>
 
   <form name="form1" action="#" method="POST" class="row g-3 needs-validation" novalidate>
     <div class="col-md-6">
-      <label for="nome" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="nome" required>
-      <div class="invalid-feedback">Informe o nome corretamente.</div>
+      <label for="modelo" class="form-label">Modelo da bolsa</label>
+      <input type="text" class="form-control" id="modelo" placeholder="modelo" required>
+      <div id="feedbackCelular" class="invalid-feedback">Informe o modelo corretamente.</div>
     </div>
     <div class="col-md-6">
-      <label for="email" class="form-label">E-mail</label>
-      <input type="email" class="form-control" id="email" required>
-      <div class="invalid-feedback">Informe o e-mail corretamente.</div>
+      <label for="cor" class="form-label">Cor</label>
+      <input type="text" class="form-control" id="cor" placeholder="cor" required>
+      <div class="invalid-feedback">Informe a cor corretamente.</div>
     </div>
     <div class="col-md-6">
-      <label for="celular" class="form-label">Celular</label>
-      <input type="text" class="form-control" id="celular" placeholder="(99)99999-9999" pattern="\(\d{2}\)\d{5}-\d{4}"
-        required>
-      <div id="feedbackCelular" class="invalid-feedback">Informe o celular corretamente.</div>
+      <label for="marca" class="form-label">Marca</label>
+      <input type="text" class="form-control" id="marca"placeholder="marca" required>
+      <div class="invalid-feedback" id="feedbackMarca">Informe a marca corretamente.</div>
     </div>
     <div class="col-md-6">
-      <label for="estado" class="form-label">Estado</label>
-      <select id="estado" class="form-select" required>
-        <option value="" disabled selected>Selecione o estado...</option>
-        <option value="ES">ES</option>
-        <option value="MG">MG</option>
-        <option value="RJ">RJ</option>
-        <option value="SP">SP</option>
+      <label for="materia" class="form-label">Matéria prima</label>
+      <input type="text" class="form-control" id="materia" placeholder="materia prima" required>
+      <div id="feedbackMateria" class="invalid-feedback">Informe o modelo corretamente.</div>
+    </div>
+    <div class="col-md-6">
+      <label for="versatilidade" class="form-label">Versatilidade</label>
+      <input type="text" class="form-control" id="versatilidade" placeholder="versatilidade" required>
+      <div id="feedbackVersatilidade" class="invalid-feedback">Informe Versatilidade corretamente.</div>
+    </div>
+    <div class="col-md-6">
+      <label for="tamanho" class="form-label">Tamanho</label>
+      <select id="tamanho" class="form-select" required>
+        <option value="" disabled selected>Selecione o Tamanho</option>
+        <option value="ES">p</option>
+        <option value="MG">M</option>
+        <option value="RJ">g</option>
+        <option value="SP">gg</option>
       </select>
-      <div class="invalid-feedback">Informe o estado corretamente.</div>
+      <div class="invalid-feedback">Informe o tamanho corretamente.</div>
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <input type="submit" class="btn btn-primary me-md-2" value="Inserir" id="btnInserir">
@@ -56,11 +65,12 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Nome</th>
-        <th scope="col">E-mail</th>
-        <th scope="col">Celular</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Ação</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Cor</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Matéria prima</th>
+        <th scope="col">Versatilidade</th>
+        <th scope="col">Tamanho</th>
       </tr>
     </thead>
     <tbody>

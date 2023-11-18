@@ -21,11 +21,11 @@
 
 
 function getLocalStorage() {
-  return JSON.parse(localStorage.getItem('bd_clientes')) ?? [];
+  return JSON.parse(localStorage.getItem('db_bolsas')) ?? [];
 }
 
-function setLocalStorage(bd_clientes) {
-  localStorage.setItem('bd_clientes', JSON.stringify(bd_clientes));
+function setLocalStorage(db_bolsas) {
+  localStorage.setItem('db_bolsas', JSON.stringify(db_bolsas));
 }
 
 function limparTabela() {
@@ -37,16 +37,18 @@ function limparTabela() {
 
 function atualizarTabela() { // Adaptação da função atualizarTabela (5 pontos)
   limparTabela();
-  const bd_clientes = getLocalStorage();
+  const db_bolsas = getLocalStorage();
   let index = 0;
-  for (cliente of bd_clientes) {
+  for (bolsa of db_bolsas) {
     const novaLinha = document.createElement('tr');
     novaLinha.innerHTML = `
         <th scope="row">${index}</th>
-        <td>${cliente.nome}</td>
-        <td>${cliente.email}</td>
-        <td>${cliente.celular}</td>
-        <td>${cliente.estado}</td>
+        <td>${bolsa.modelo}</td>
+        <td>${bolsa.cor}</td>
+        <td>${bolsa.marca}</td>
+        <td>${bolsa.materia}</td>
+        <td>${bolsa.versatilidade}</td>
+        <td>${bolsa.tamanho}</td>
         <td>
             <button type="button" class="btn btn-danger" id="${index}" onclick="excluir(${index})">Excluir</button>
         </td>
@@ -57,35 +59,40 @@ function atualizarTabela() { // Adaptação da função atualizarTabela (5 ponto
 }
 
 function inserir() { // Adaptação da função inserir (10 pontos)
-  const cliente = {
-    nome: document.getElementById('nome').value,
-    email: document.getElementById('email').value,
-    celular: document.getElementById('celular').value,
-    estado: document.getElementById('estado').value
+  const bolsa = {
+    modelo: document.getElementById('modelo').value,
+    cor: document.getElementById('cor').value,
+    marca: document.getElementById('marca').value,
+    materia: document.getElementById('materia').value,
+    versatilidade: document.getElementById('versatilidade').value,
+    tamanho: document.getElementById('tamanho').value
   }
-  const bd_clientes = getLocalStorage();
-  bd_clientes.push(cliente);
-  setLocalStorage(bd_clientes);
+  const db_bolsas = getLocalStorage();
+  db_bolsas.push(bolsa);
+  setLocalStorage(db_bolsas);
   atualizarTabela();
 }
 
 function excluir(index) { // Adaptação da função excluir (5 pontos)
-  const bd_clientes = getLocalStorage();
-  bd_clientes.splice(index, 1);
-  setLocalStorage(bd_clientes);
+  const db_bolsas = getLocalStorage();
+  db_bolsas.splice(index, 1);
+  setLocalStorage(db_bolsas);
   atualizarTabela();
 }
 
-function validarCelular() { // Adaptação da função validar (10 pontos)
-  const bd_clientes = getLocalStorage();
-  for (cliente of bd_clientes) {
-    if (celular.value == cliente.celular) {
-      celular.setCustomValidity("Este número de celular já existe!");
-      feedbackCelular.innerText = "Este número de celular já existe!";
+function validarMarca() { // Adaptação da função validar (10 pontos)
+  const db_bolsas = getLocalStorage();
+  const feedbackMarca = document.getElementById("feedbackMarca");
+  for (bolsa of db_bolsas) {
+    console.log(marca.value)
+    console.log(bolsa.marca)
+    if (marca.value === bolsa.marca) {
+      marca.setCustomValidity("Esta marca já existe!");
+      feedbackMarca.innerText = "Esta marca já existe!";
       return false;
     } else {
-      celular.setCustomValidity("");
-      feedbackCelular.innerText = "Informe o celular corretamente.";
+      marca.setCustomValidity("");
+      feedbackMarca.innerText = "Informe a marca corretamente.";
     }
   }
   return true;
@@ -93,6 +100,5 @@ function validarCelular() { // Adaptação da função validar (10 pontos)
 
 atualizarTabela();
 // Seleção dos elementos e adição do listener para validação customizada (5 pontos)
-const celular = document.getElementById("celular");
-const feedbackCelular = document.getElementById("feedbackCelular");
-celular.addEventListener('input', validarCelular);
+const marca = document.getElementById("marca");
+marca.addEventListener('input', validarMarca);

@@ -1,7 +1,8 @@
+// Sandra & Mário
 (function() {
   'use strict'
 
-  var forms = document.querySelectorAll('.needs-validation')
+  const forms = document.querySelectorAll('.needs-validation')
 
   Array.prototype.slice.call(forms)
     .forEach(function(form) {
@@ -29,7 +30,7 @@ function setLocalStorage(db_bolsas) {
 }
 
 function limparTabela() {
-  var elemento = document.querySelector("#tabela>tbody");
+  const elemento = document.querySelector("#tabela>tbody");
   while (elemento.firstChild) {
     elemento.removeChild(elemento.firstChild);
   }
